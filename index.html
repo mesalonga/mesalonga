@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mesalonga — Comer bem. Viver muito.</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #2D6A4F;
+    --verde-claro: #52B788;
+    --verde-musgo: #1B4332;
+    --creme: #F8F4EE;
+    --creme-escuro: #EDE8DF;
+    --terra: #A0522D;
+    --preto: #1A1A1A;
+    --cinza: #6B6B6B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--creme);
+    color: var(--preto);
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--verde-musgo);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 60%, rgba(82,183,136,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(45,106,79,0.3) 0%, transparent 50%);
+  }
+
+  .hero-leaf {
+    position: absolute;
+    font-size: 180px;
+    opacity: 0.06;
+    user-select: none;
+  }
+  .hero-leaf:nth-child(1) { top: -30px; left: -40px; transform: rotate(-20deg); }
+  .hero-leaf:nth-child(2) { bottom: -20px; right: -30px; transform: rotate(40deg); font-size: 220px; }
+
+  .hero-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(64px, 12vw, 120px);
+    font-weight: 700;
+    color: var(--creme);
+    line-height: 0.9;
+    letter-spacing: -2px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+
+  .hero-title span {
+    color: var(--verde-claro);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(16px, 3vw, 22px);
+    color: rgba(248,244,238,0.6);
+    margin-top: 20px;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 14px 36px;
+    background: transparent;
+    border: 1px solid rgba(248,244,238,0.3);
+    color: var(--creme);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .hero-cta:hover {
+    background: var(--verde-claro);
+    border-color: var(--verde-claro);
+    color: var(--verde-musgo);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(248,244,238,0.3);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:0.3} 50%{opacity:0.8} }
+
+  /* MANIFESTO */
+  .manifesto {
+    padding: 100px 24px;
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .manifesto h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--verde-musgo);
+    margin-bottom: 32px;
+  }
+
+  .manifesto p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--cinza);
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+
+  /* ZONAS AZUIS */
+  .zonas {
+    background: var(--verde-musgo);
+    padding: 100px 24px;
+  }
+
+  .zonas-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .zonas-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .zonas-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    color: var(--creme);
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+
+  .zonas-header p {
+    color: rgba(248,244,238,0.55);
+    font-size: 16px;
+    font-weight: 300;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .zonas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2px;
+  }
+
+  .zona-card {
+    background: rgba(255,255,255,0.04);
+    padding: 40px 28px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.3s;
+  }
+  .zona-card:hover { background: rgba(82,183,136,0.1); }
+
+  .zona-flag { font-size: 36px; margin-bottom: 16px; }
+
+  .zona-nome {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--creme);
+    margin-bottom: 6px;
+    font-weight: 400;
+  }
+
+  .zona-pais {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    margin-bottom: 16px;
+  }
+
+  .zona-segredo {
+    font-size: 14px;
+    color: rgba(248,244,238,0.5);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* PILARES */
+  .pilares {
+    padding: 100px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .pilares-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .pilares-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    color: var(--verde-musgo);
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+
+  .pilares-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 32px;
+  }
+
+  .pilar {
+    padding: 40px 32px;
+    background: var(--creme-escuro);
+    border-left: 3px solid var(--verde-claro);
+  }
+
+  .pilar-icon { font-size: 32px; margin-bottom: 20px; }
+
+  .pilar h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--verde-musgo);
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+
+  .pilar p {
+    font-size: 15px;
+    color: var(--cinza);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ALIMENTOS */
+  .alimentos {
+    background: var(--creme-escuro);
+    padding: 100px 24px;
+  }
+
+  .alimentos-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .alimentos-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .alimentos-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    color: var(--verde-musgo);
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+
+  .alimentos-header p {
+    color: var(--cinza);
+    font-size: 16px;
+    font-weight: 300;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .alimentos-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2px;
+  }
+
+  .alimento-item {
+    background: var(--creme);
+    padding: 32px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: transform 0.2s;
+  }
+  .alimento-item:hover { transform: translateY(-2px); }
+
+  .alimento-emoji { font-size: 32px; flex-shrink: 0; margin-top: 2px; }
+
+  .alimento-info h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--verde-musgo);
+    margin-bottom: 6px;
+    font-weight: 400;
+  }
+
+  .alimento-info p {
+    font-size: 14px;
+    color: var(--cinza);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .alimento-tag {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+  }
+
+  /* CITACAO */
+  .citacao {
+    padding: 100px 24px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .citacao blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 4vw, 38px);
+    font-style: italic;
+    color: var(--verde-musgo);
+    line-height: 1.4;
+    font-weight: 400;
+    margin-bottom: 24px;
+  }
+
+  .citacao cite {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cinza);
+    font-style: normal;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--preto);
+    padding: 60px 24px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--creme);
+    margin-bottom: 8px;
+  }
+  .footer-logo span { color: var(--verde-claro); font-style: italic; }
+
+  .footer-tagline {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(248,244,238,0.3);
+    margin-bottom: 32px;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(248,244,238,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--verde-claro); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(248,244,238,0.2);
+  }
+
+  /* ANIMAÇÕES DE ENTRADA */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-leaf">🌿</div>
+  <div class="hero-leaf">🌱</div>
+
+  <span class="hero-tag">Longevidade · Nutrição · Família</span>
+
+  <!-- Logo SVG negativa (branca) embutida -->
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="48 282 1029 620" style="width:min(280px,60vw);margin-bottom:8px;position:relative;" aria-label="Mesalonga">
+<g
+     id="g20"
+     transform="matrix(2.8417419,0,0,2.8417419,-470.33887,-57.12997)"
+     style="fill:#ffffff">
+    <g
+       id="g18"
+       style="fill:#ffffff">
+      <path
+         style="fill:#ffffff;fill-opacity:1"
+         d="m 229.08573,279.55881 c 0,0 -10.79638,4.11612 -17.34169,7.7599 -6.54531,3.64378 -18.28637,11.60611 -18.28637,11.60611 0,0 13.428,-5.93801 19.90583,-7.96233 6.47783,-2.02432 15.45232,-4.38603 15.45232,-4.38603 0,0 -2.49666,35.49311 -2.63162,37.24752 -0.13495,1.75441 1.88937,3.03648 4.04864,2.969 2.15928,-0.0675 4.52099,-0.40486 4.58847,-2.09179 0.0675,-1.68694 1.21459,-29.28519 2.69909,-39.20437 1.4845,-9.91917 7.96233,-35.42562 12.61827,-46.08705 4.65594,-10.66143 16.46449,-32.11924 20.17574,-37.44995 3.71126,-5.33071 16.93683,-21.72772 28.9478,-31.57942 12.01098,-9.8517 34.21104,-22.80735 42.91562,-26.78852 8.70458,-3.98117 25.84384,-9.10945 25.84384,-9.10945 0,0 -17.81403,2.29423 -26.92348,5.73558 -9.10945,3.44135 -21.32285,7.22008 -30.49978,13.63043 -9.17692,6.41035 -24.08943,14.84503 -34.6159,27.93564 -10.52647,13.09061 -12.88818,14.9125 -20.98547,27.53077 -8.09728,12.61828 -7.55746,14.23773 -12.61827,26.38366 -5.0608,12.14593 -8.02981,23.00979 -8.02981,23.00979 0,0 -5.26323,-24.02195 -4.52098,-33.94112 0,0 1.55198,-25.03411 8.56963,-42.03842 7.01765,-17.0043 13.15809,-26.2487 21.39033,-36.50526 0,0 11.67359,-12.34836 24.02195,-21.99763 0,0 10.86386,-8.3672 36.7077,-17.88151 25.84384,-9.51431 51.21533,-3.44135 64.71081,-0.20243 13.49548,3.23891 17.94899,5.33071 30.70221,13.09061 12.75323,7.7599 24.89916,18.62376 24.89916,18.62376 0,0 -10.52647,-1.55198 -28.88032,5.87053 -18.35385,7.42252 -30.90465,19.77088 -41.09373,28.47546 -10.18909,8.70458 -15.5198,17.07178 -30.97212,27.4633 -15.45232,10.39152 -26.18123,14.57511 -45.14237,19.77087 -18.96115,5.19576 -25.91132,2.6991 -27.59826,2.76657 -1.68693,0.0675 -2.83405,1.75442 -2.969,4.65594 -0.13496,2.90153 -0.0675,3.71126 3.30639,4.45351 3.37387,0.74225 16.1271,1.82189 29.89248,-3.03648 13.76539,-4.85837 38.59707,-13.02314 51.89011,-23.75204 0,0 15.24989,-11.74107 24.02195,-21.39033 8.77206,-9.64927 15.78971,-13.90034 26.11375,-22.13259 10.32404,-8.23224 20.64808,-12.07845 31.6469,-13.09061 10.99881,-1.01216 22.6724,0.13496 24.69672,-0.67477 2.02432,-0.80973 1.82189,-2.76657 1.88937,-4.45351 0.0675,-1.68693 -3.17144,-4.85837 -5.46567,-7.08513 -2.29423,-2.22675 -14.97998,-15.38484 -22.20006,-19.56844 -7.22008,-4.1836 -28.61041,-15.99214 -41.16121,-18.961143 -12.55079,-2.969005 -26.51861,-6.477829 -41.70102,-4.38603 -15.18241,2.091799 -30.63474,4.183598 -45.34481,10.526473 -14.71007,6.34287 -31.24203,19.43349 -40.08156,26.78852 -8.83954,7.35504 -23.81952,30.70221 -25.84384,35.15572 -2.02432,4.45351 -8.02981,18.69124 -12.01098,32.86149 -3.98116,14.17025 -4.1836,26.45113 -3.77873,33.13139 0.40486,6.68027 1.01216,15.38485 4.38603,29.15024 3.37387,13.76538 4.65594,19.16357 4.65594,19.16357 z"
+         id="path17" />
+    </g>
+</svg>
+
+  <p class="hero-sub">Comer bem. Viver muito.</p>
+  <a href="#manifesto" class="hero-cta">Descobrir</a>
+  <span class="scroll-hint">↓ rolar</span>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto" id="manifesto">
+  <span class="section-label">O que é Mesalonga</span>
+  <h2 class="fade-in">A mesa onde você come<br>determina a vida que você terá.</h2>
+  <p class="fade-in">Existem lugares no mundo onde as pessoas chegam aos 100 anos com saúde, disposição e alegria. Nesses lugares, ninguém conta caloria. Ninguém segue dieta. Eles simplesmente comem comida de verdade, se movem com naturalidade e vivem em comunidade.</p>
+  <p class="fade-in">Mesalonga nasce da crença de que qualquer família, em qualquer cidade do Brasil, pode se aproximar desse jeito de viver — com os alimentos disponíveis perto de casa, no orçamento que tem, respeitando os gostos de cada um.</p>
+  <p class="fade-in">Não é perfeição. É consistência. Uma refeição de cada vez.</p>
+</section>
+
+<!-- ZONAS AZUIS -->
+<section class="zonas">
+  <div class="zonas-inner">
+    <div class="zonas-header fade-in">
+      <span class="section-label" style="color:var(--verde-claro)">As Zonas Azuis</span>
+      <h2>Onde as pessoas vivem mais</h2>
+      <p>Cinco regiões do mundo com a maior concentração de centenários saudáveis. O que elas têm em comum?</p>
+    </div>
+    <div class="zonas-grid">
+      <div class="zona-card fade-in">
+        <div class="zona-flag">🇯🇵</div>
+        <div class="zona-nome">Okinawa</div>
+        <div class="zona-pais">Japão</div>
+        <div class="zona-segredo">Batata-doce roxa, tofu e a regra dos 80% — parar de comer antes de estar totalmente satisfeito.</div>
+      </div>
+      <div class="zona-card fade-in">
+        <div class="zona-flag">🇮🇹</div>
+        <div class="zona-nome">Sardenha</div>
+        <div class="zona-pais">Itália</div>
+        <div class="zona-segredo">Pão de fermentação natural, queijo de ovelha rico em ômega-3 e vinho tinto local em pequenas doses.</div>
+      </div>
+      <div class="zona-card fade-in">
+        <div class="zona-flag">🇬🇷</div>
+        <div class="zona-nome">Icária</div>
+        <div class="zona-pais">Grécia</div>
+        <div class="zona-segredo">Azeite em abundância, chá de ervas locais, soneca à tarde e quase zero estresse crônico.</div>
+      </div>
+      <div class="zona-card fade-in">
+        <div class="zona-flag">🇨🇷</div>
+        <div class="zona-nome">Nicoya</div>
+        <div class="zona-pais">Costa Rica</div>
+        <div class="zona-segredo">Milho, feijão e abóbora — as "três irmãs" que formam uma proteína completa e sustentável.</div>
+      </div>
+      <div class="zona-card fade-in">
+        <div class="zona-flag">🇺🇸</div>
+        <div class="zona-nome">Loma Linda</div>
+        <div class="zona-pais">Califórnia</div>
+        <div class="zona-segredo">Adventistas do Sétimo Dia: descanso semanal, comunidade forte e dieta majoritariamente vegetal.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section class="pilares">
+  <div class="pilares-header fade-in">
+    <span class="section-label">Os quatro pilares</span>
+    <h2>Longevidade não é só comida</h2>
+  </div>
+  <div class="pilares-grid">
+    <div class="pilar fade-in">
+      <div class="pilar-icon">🥬</div>
+      <h3>Alimentação</h3>
+      <p>Rica em plantas, fibras e fermentados. Pobre em ultraprocessados e açúcar. A carne existe, mas como coadjuvante — não como protagonista.</p>
+    </div>
+    <div class="pilar fade-in">
+      <div class="pilar-icon">🚶</div>
+      <h3>Movimento</h3>
+      <p>Baixa intensidade, mas constante. Caminhar até o mercado, cuidar da horta, subir escada. O corpo foi feito para se mover o dia todo, não uma hora por semana.</p>
+    </div>
+    <div class="pilar fade-in">
+      <div class="pilar-icon">🧭</div>
+      <h3>Propósito</h3>
+      <p>Ter uma razão para acordar. Em Okinawa chamam de Ikigai. Na Costa Rica, Plan de Vida. O nome muda, o efeito é o mesmo: reduz inflamação e estresse crônico.</p>
+    </div>
+    <div class="pilar fade-in">
+      <div class="pilar-icon">👨‍👩‍👧</div>
+      <h3>Comunidade</h3>
+      <p>Família em primeiro lugar. Círculos sociais ativos. A solidão envelhece mais rápido do que qualquer alimento ruim. Comer junto é parte da medicina.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ALIMENTOS -->
+<section class="alimentos">
+  <div class="alimentos-inner">
+    <div class="alimentos-header fade-in">
+      <span class="section-label">Superalimentos acessíveis</span>
+      <h2>O que os centenários comem</h2>
+      <p>Alimentos simples, baratos e disponíveis. Nenhum suplemento caro. Nenhuma dieta exótica.</p>
+    </div>
+    <div class="alimentos-lista">
+      <div class="alimento-item fade-in">
+        <span class="alimento-emoji">🥚</span>
+        <div class="alimento-info">
+          <h4>Ovos</h4>
+          <p>Proteína completa, vitamina B12 e gordura de qualidade. A fonte de nutrição mais acessível e versátil de todas.</p>
+          <span class="alimento-tag">Proteína · B12 · Gordura boa</span>
+        </div>
+      </div>
+      <div class="alimento-item fade-in">
+        <span class="alimento-emoji">🫘</span>
+        <div class="alimento-info">
+          <h4>Feijão</h4>
+          <p>O segredo da longevidade nas Zonas Azuis. Combinado com arroz, forma proteína completa com todos os aminoácidos essenciais.</p>
+          <span class="alimento-tag">Proteína · Fibra · Energia</span>
+        </div>
+      </div>
+      <div class="alimento-item fade-in">
+        <span class="alimento-emoji">🥬</span>
+        <div class="alimento-info">
+          <h4>Folhas verdes escuras</h4>
+          <p>Couve, espinafre, brócolis. Ferro, cálcio e magnésio na forma mais biodisponível da natureza. Essenciais para crianças e adultos.</p>
+          <span class="alimento-tag">Ferro · Cálcio · Magnésio</span>
+        </div>
+      </div>
+      <div class="alimento-item fade-in">
+        <span class="alimento-emoji">🍠</span>
+        <div class="alimento-info">
+          <h4>Raízes</h4>
+          <p>Batata-doce, aipim, inhame. Carboidrato de digestão lenta que fornece energia estável sem picos de insulina.</p>
+          <span class="alimento-tag">Slow carb · Energia · Fibra</span>
+        </div>
+      </div>
+      <div class="alimento-item fade-in">
+        <span class="alimento-emoji">🫙</span>
+        <div class="alimento-info">
+          <h4>Fermentados</h4>
+          <p>Kimchi, chucrute, iogurte natural. Probióticos que equilibram o intestino, reduzem o índice glicêmico das refeições e fortalecem a imunidade.</p>
+          <span class="alimento-tag">Probiótico · Imunidade · Intestino</span>
+        </div>
+      </div>
+      <div class="alimento-item fade-in">
+        <span class="alimento-emoji">🫒</span>
+        <div class="alimento-info">
+          <h4>Azeite de oliva</h4>
+          <p>A gordura antiinflamatória das Zonas Azuis. Um fio no prato substitui manteigas e óleos processados com vantagem absoluta.</p>
+          <span class="alimento-tag">Antiinflamatório · Gordura boa · Ômega</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CITAÇÃO -->
+<section class="citacao">
+  <blockquote class="fade-in">"A dieta mais saudável do mundo não é cara. É simples, local e feita em casa."</blockquote>
+  <cite>— Princípio Mesalonga</cite>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="48 282 1029 620" style="width:150px;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" aria-label="Mesalonga">
+<g
+     id="g20"
+     transform="matrix(2.8417419,0,0,2.8417419,-470.33887,-57.12997)"
+     style="fill:#ffffff">
+    <g
+       id="g18"
+       style="fill:#ffffff">
+      <path
+         style="fill:#ffffff;fill-opacity:1"
+         d="m 229.08573,279.55881 c 0,0 -10.79638,4.11612 -17.34169,7.7599 -6.54531,3.64378 -18.28637,11.60611 -18.28637,11.60611 0,0 13.428,-5.93801 19.90583,-7.96233 6.47783,-2.02432 15.45232,-4.38603 15.45232,-4.38603 0,0 -2.49666,35.49311 -2.63162,37.24752 -0.13495,1.75441 1.88937,3.03648 4.04864,2.969 2.15928,-0.0675 4.52099,-0.40486 4.58847,-2.09179 0.0675,-1.68694 1.21459,-29.28519 2.69909,-39.20437 1.4845,-9.91917 7.96233,-35.42562 12.61827,-46.08705 4.65594,-10.66143 16.46449,-32.11924 20.17574,-37.44995 3.71126,-5.33071 16.93683,-21.72772 28.9478,-31.57942 12.01098,-9.8517 34.21104,-22.80735 42.91562,-26.78852 8.70458,-3.98117 25.84384,-9.10945 25.84384,-9.10945 0,0 -17.81403,2.29423 -26.92348,5.73558 -9.10945,3.44135 -21.32285,7.22008 -30.49978,13.63043 -9.17692,6.41035 -24.08943,14.84503 -34.6159,27.93564 -10.52647,13.09061 -12.88818,14.9125 -20.98547,27.53077 -8.09728,12.61828 -7.55746,14.23773 -12.61827,26.38366 -5.0608,12.14593 -8.02981,23.00979 -8.02981,23.00979 0,0 -5.26323,-24.02195 -4.52098,-33.94112 0,0 1.55198,-25.03411 8.56963,-42.03842 7.01765,-17.0043 13.15809,-26.2487 21.39033,-36.50526 0,0 11.67359,-12.34836 24.02195,-21.99763 0,0 10.86386,-8.3672 36.7077,-17.88151 25.84384,-9.51431 51.21533,-3.44135 64.71081,-0.20243 13.49548,3.23891 17.94899,5.33071 30.70221,13.09061 12.75323,7.7599 24.89916,18.62376 24.89916,18.62376 0,0 -10.52647,-1.55198 -28.88032,5.87053 -18.35385,7.42252 -30.90465,19.77088 -41.09373,28.47546 -10.18909,8.70458 -15.5198,17.07178 -30.97212,27.4633 -15.45232,10.39152 -26.18123,14.57511 -45.14237,19.77087 -18.96115,5.19576 -25.91132,2.6991 -27.59826,2.76657 -1.68693,0.0675 -2.83405,1.75442 -2.969,4.65594 -0.13496,2.90153 -0.0675,3.71126 3.30639,4.45351 3.37387,0.74225 16.1271,1.82189 29.89248,-3.03648 13.76539,-4.85837 38.59707,-13.02314 51.89011,-23.75204 0,0 15.24989,-11.74107 24.02195,-21.39033 8.77206,-9.64927 15.78971,-13.90034 26.11375,-22.13259 10.32404,-8.23224 20.64808,-12.07845 31.6469,-13.09061 10.99881,-1.01216 22.6724,0.13496 24.69672,-0.67477 2.02432,-0.80973 1.82189,-2.76657 1.88937,-4.45351 0.0675,-1.68693 -3.17144,-4.85837 -5.46567,-7.08513 -2.29423,-2.22675 -14.97998,-15.38484 -22.20006,-19.56844 -7.22008,-4.1836 -28.61041,-15.99214 -41.16121,-18.961143 -12.55079,-2.969005 -26.51861,-6.477829 -41.70102,-4.38603 -15.18241,2.091799 -30.63474,4.183598 -45.34481,10.526473 -14.71007,6.34287 -31.24203,19.43349 -40.08156,26.78852 -8.83954,7.35504 -23.81952,30.70221 -25.84384,35.15572 -2.02432,4.45351 -8.02981,18.69124 -12.01098,32.86149 -3.98116,14.17025 -4.1836,26.45113 -3.77873,33.13139 0.40486,6.68027 1.01216,15.38485 4.38603,29.15024 3.37387,13.76538 4.65594,19.16357 4.65594,19.16357 z"
+         id="path17" />
+    </g>
+</svg>
+  <div class="footer-tagline">Comer bem. Viver muito.</div>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/mesalonga.familia/" target="_blank">Instagram</a>
+    <a href="#">Contato</a>
+  </div>
+  <div class="footer-copy">© 2026 Mesalonga · mesalonga.com.br</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+
+  <a href="https://www.instagram.com/mesalonga.familia/" target="_blank" style="
+    position:fixed; bottom:28px; right:28px; z-index:999;
+    width:48px; height:48px; border-radius:50%;
+    background:var(--verde); 
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 16px rgba(0,0,0,0.3);
+    transition:transform 0.2s, background 0.2s;
+    text-decoration:none;
+  " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+      <circle cx="12" cy="12" r="4"></circle>
+      <circle cx="17.5" cy="6.5" r="1" fill="#ffffff" stroke="none"></circle>
+    </svg>
+  </a>
+
+</body>
+</html>
